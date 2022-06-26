@@ -1,0 +1,24 @@
+.testimonial{
+    background-color: $transparente;
+    font-size: 2.4rem;
+    padding: 2rem;
+    color:$blanco;
+    border-radius: 2rem;
+    blockquote{
+        padding-left: 5rem;
+        position: relative;
+
+        &::before{
+            content: '';
+            background-image: url("https://uver24.github.io/imperiodomnativo/img/blog/quotes.svg");
+            background-size: 20rem 20rem;
+            background-repeat: no-repeat;
+            width: 20rem;
+            height: 20rem;
+            display: block; 
+        }
+    }
+    p{
+        color: $blanco;
+    }
+}

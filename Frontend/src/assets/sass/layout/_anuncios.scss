@@ -1,0 +1,39 @@
+@include tablet{
+    .contenedor-anuncio{
+        @include grid(3, 2rem);
+     
+    }
+}
+.anuncio{
+    display: flex;
+    flex-direction: column;
+    background-color: lighten($azulOscuro, $amount: 5);
+    border: .35rem solid darken($negro, $amount: 10);
+    padding: .8rem;
+    border-radius: .5rem;
+    justify-content: space-between;
+    .contenido-anuncio{
+        padding: 1rem;
+    }
+    img{
+        width: 100%;
+        border-radius: 1rem;
+    }
+    h3, p{
+        text-align: center;
+        margin: 0;
+    }
+    p {
+        color: $blanco;
+    }
+    h3{
+        color: $dorado;
+        font-weight: $bold;
+    }
+    .precio{
+        color: $dorado;
+        font-weight: bold;
+        font-size: 3rem;
+    }
+}
+

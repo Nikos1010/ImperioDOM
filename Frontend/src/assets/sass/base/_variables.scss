@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+//Fuentes
+$fuente_principal: 'Hind Siliguri', sans-serif;
+$fuente_secundaria: 'Alegreya', cursive;
+
+//Tamaño media queris
+$telefono: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+//Colores
+$negro: black;
+$blanco: white;
+$blancoTransparente: hsla(0, 100%, 100%, .7);
+$dorado:#eef000;
+$azul: #81c9fa;
+$azulOscuro: #003785;
+$transparente: #000000c5;
+
+
+$separacion: 5rem;
+
+//Fuentes
+$delgada: 300;
+$regular: 400;
+$bold: 700;
+$black: 900;

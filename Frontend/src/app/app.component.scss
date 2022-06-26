@@ -1,0 +1,52 @@
+header {
+    background-image: url("./../assets/fondoNav.jpg");
+}
+
+.header {
+    padding: 30px;
+
+    &.inicio {
+        background-position: center center;
+        background-size: cover;
+        opacity: .85;
+    }
+}
+
+.contenido-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h1 {
+        text-align: left;
+        color: #fff;
+    }
+}
+
+img {
+    width: 20%;
+    margin: auto;
+    padding: 30px 30px 30px 30px;
+}
+
+.barra {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.navegacion {
+    a {
+        color: blanchedalmond;
+        text-decoration: none;
+        font-size: 2.2rem;
+        display: block;
+        text-align: center;
+    }
+
+}
