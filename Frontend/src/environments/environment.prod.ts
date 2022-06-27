@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  urlConnectionAPI: "http://localhost:3000/"
 };
