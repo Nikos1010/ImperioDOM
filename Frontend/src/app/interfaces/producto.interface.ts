@@ -1,27 +1,50 @@
 export interface Producto {
-  _id?: string;
-  codigo?: number;
-  nombre?: string;
-  descripcion?: string;
-  instrucciones?: string;
+  nombre: string;
+  descripcion: string;
+  instrucciones: string;
+  categoria: string;
   imagen?: string;
-  detalles?: Detalles;
-  categoria?: string;
+  peso: string;
+  stock: number;
+  precio: string;
+  sabores: string[];
+}
+
+export interface ProductoDB {
+  _id: Id;
+  codigo: number;
+  nombre: string;
+  descripcion: string;
+  instrucciones: string;
+  imagen: string;
+  detalles: Detalles;
+  categoria: string;
 }
 
 interface Detalles {
-  pesos?: Pesos;
-  stock?: Stock;
-  precios?: Stock;
-  sabores?: object;
+  pesos: Pesos;
+  stock: Stock;
+  precios: Stock;
+  sabores: Sabores;
+}
+
+interface Sabores {
+  '0': string;
+  '1': string;
+  '2': string;
+  '3': string;
 }
 
 interface Stock {
-  grande?: number;
-  peque?: number;
+  grande: number;
+  peque: number;
 }
 
 interface Pesos {
-  grande?: string;
-  peque?: string;
+  grande: string;
+  peque: string;
+}
+
+interface Id {
+  '$oid': string;
 }

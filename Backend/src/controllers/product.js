@@ -24,7 +24,7 @@ export const getProducts = async (req, res) => {
 
 export const editProduct = async (req, res) => {
     try {
-        const { codigo, nombre, descripcion, instrucciones, imagen, categoria, detalles } = req.body;
+        const { nombre, descripcion, instrucciones, imagen, categoria, peso, stock, precio, sabores } = req.body;
         const prodId = req.params.prodId;
 
         let producto = await Product.findById(prodId);
@@ -32,13 +32,15 @@ export const editProduct = async (req, res) => {
             res.status(404).json({ msg: "Producto no encontrado" });
         }
 
-        producto.codigo = codigo;
         producto.nombre = nombre;
         producto.descripcion = descripcion;
         producto.instrucciones = instrucciones;
         producto.imagen = imagen;
         producto.categoria = categoria;
-        producto.detalles = detalles;
+        producto.peso = peso;
+        producto.stock = stock;
+        producto.precio = precio;
+        producto.sabores = sabores;
 
         producto = await Product.findOneAndUpdate({ _id: prodId }, producto, { new: true });
         res.json(producto);
