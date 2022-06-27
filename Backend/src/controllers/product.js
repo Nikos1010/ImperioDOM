@@ -1,18 +1,77 @@
 import Product from '../models/product.js';
 import { Generic } from './generic.js';
 
-export const postAddProduct = (req, res) => {
-    const { codigo, nombre, descripcion, instrucciones, img, detalles, categoria } = req.body;
-    const product = new Product(codigo, nombre, descripcion, instrucciones, img, detalles, categoria);
-    product.save()
-        .then(result => res.status(302).redirect('/home'))
-        .catch(err => console.log(err));
+export const postAddProduct = async (req, res) => {
+    try {
+        const product = new Product(req.body);
+        await product.save();
+        res.send(product)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
 }
 
-export const getProducts = (req, res) => {
-    Product.fetchAll()
-        .then(products => {
-            Generic.notFoundElement(products, 'Productos', res);
-        })
-        .catch(err => console.log(err));
+export const getProducts = async (req, res) => {
+    try {
+        const productos = await Product.find();
+        Generic.notFoundElements(productos, "Producto", res)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+}
+
+export const editProduct = async (req, res) => {
+    try {
+        const { codigo, nombre, descripcion, instrucciones, imagen, categoria, detalles } = req.body;
+        const prodId = req.params.prodId;
+
+        let producto = await Product.findById(prodId);
+        if(!producto){
+            res.status(404).json({ msg: "Producto no encontrado" });
+        }
+
+        producto.codigo = codigo;
+        producto.nombre = nombre;
+        producto.descripcion = descripcion;
+        producto.instrucciones = instrucciones;
+        producto.imagen = imagen;
+        producto.categoria = categoria;
+        producto.detalles = detalles;
+
+        producto = await Product.findOneAndUpdate({ _id: prodId }, producto, { new: true });
+        res.json(producto);
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+}
+
+export const getProduct = async (req, res) => {
+    try {
+        const prodId = req.params.prodId;
+        const producto = await Product.findById(prodId);
+        Generic.notFoundElement(producto, "Producto", res)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+}
+
+export const deleteProduct = async (req, res) => {
+    try {
+        const prodId = req.params.prodId;
+        const producto = await Product.findById(prodId);
+        if(!producto){
+            res.status(404).json({ msg: "No se encontro el producto "});
+        }
+
+        await Product.findOneAndRemove({ _id: prodId });
+        res.json({ msg: "El producto fue eliminado con exito "});
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
 }

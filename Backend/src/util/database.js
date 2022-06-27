@@ -1,23 +1,18 @@
-import mongodb from 'mongodb';
-const MongoClient = mongodb.MongoClient;
-import config from '../config.js';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const { connectionUrl } = config.dbMongo;
-
-let _db;
-export const mongoConnect = callback => {
-    MongoClient.connect(connectionUrl)
-        .then(client => {
-            console.log('Connected with Mongo');
-            _db = client.db();
-            callback();
-        })
-        .catch(err => console.log(err));
-}
-
-export const getDb = () => {
-    if(_db){
-        return _db;
+dotenv.config({ path: '.env' });
+const conectarDB = async () => {
+    
+    try {
+        await mongoose.connect(process.env.DB_MONGO, {
+            useUnifiedTopology: true
+        });
+        console.log("DB Conectada");
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
     }
-    throw 'No database Found';
 }
+
+export default conectarDB;
