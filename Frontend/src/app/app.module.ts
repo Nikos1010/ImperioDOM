@@ -13,10 +13,11 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import { BlogComponent } from './pages/blog/blog.component';
-import { BlogPostComponent } from './pages/blog-post/blog-post.component';
 import { CrearProductoComponent } from './pages/crear-producto/crear-producto.component';
 import { ListarProductoComponent } from './pages/listar-producto/listar-producto.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { SearchComponent } from './pages/search/search.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,11 @@ import { ListarProductoComponent } from './pages/listar-producto/listar-producto
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    BlogComponent,
-    BlogPostComponent,
     CrearProductoComponent,
-    ListarProductoComponent
+    ListarProductoComponent,
+    ProductoComponent,
+    SearchComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

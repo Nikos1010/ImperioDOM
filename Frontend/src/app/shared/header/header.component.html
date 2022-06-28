@@ -24,15 +24,16 @@
                     <a routerLink="about" class="rk-menu__link">Sobre nosotros</a>
                 </li>
                 <li routerLinkActive="active" class="rk-menu__item">
-                    <a routerLink="blog" class="rk-menu__link">Blog</a>
+                    <a routerLink="contact-us" class="rk-menu__link">Contáctenos</a>
                 </li>
                 <li routerLinkActive="active" class="rk-menu__item">
-                    <a routerLink="contact-us" class="rk-menu__link">Contáctenos</a>
+                    <a routerLink="/admin/products" class="rk-menu__link">CRUD Producto</a>
                 </li>
             </ul>
             <div class="rk-search">
-                <!-- (keyup.enter)="buscarProducto( txtBuscar.value )" -->
+                
                 <input type="text" placeholder="Buscar.:"
+                    (keyup.enter)="buscarProducto( txtBuscar.value )"
                     id="urku-search" class="rk-search-field" #txtBuscar>
                 <label for="urku-search">
                     <svg>

@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListarProductoComponent implements OnInit {
 
+  cargando: boolean = true;
+
   listaProductos: ProductoDB[] = [];
   constructor( public _productoService: ProductoService,
                private toastr: ToastrService ) { 
@@ -21,7 +23,7 @@ export class ListarProductoComponent implements OnInit {
   }
   obtenerProducto() {
     this._productoService.cargarProducto().subscribe(data => {
-      console.log(data)
+      this.cargando = false;
       this.listaProductos = data;
     }, error => console.log(error));
   }

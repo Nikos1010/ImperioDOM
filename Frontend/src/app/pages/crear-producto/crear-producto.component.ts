@@ -16,6 +16,7 @@ export class CrearProductoComponent implements OnInit {
   titulo: string = 'CREAR PRODUCTO';
   id: string | null;
   saborGuardado: string[] =[];
+  check: boolean = false;
   saboresList: string[] = Object.values(Sabores);
 
   constructor( private fb: FormBuilder,
@@ -50,7 +51,18 @@ export class CrearProductoComponent implements OnInit {
       element.style.color = "#68F401";
       this.saborGuardado.push(sabor);
     }
-    console.log(this.saborGuardado)
+    console.log(this.saborGuardado);
+  }
+
+  checkearSabores(saborDB: string) {
+    for (const sabor of this.saboresList) {
+        if(saborDB.includes(sabor)){
+          this.agregarSabor(sabor);
+          this.check = true;
+        } else {
+          this.check = false;
+        }
+    }
   }
 
 
@@ -91,6 +103,7 @@ export class CrearProductoComponent implements OnInit {
     if(this.id !== null){
       this.titulo = 'Editar Producto';
       this._productoService.obtenerProducto(this.id).subscribe(data => {
+        this.checkearSabores(data.sabores);
         this.productoForm.setValue({
           nombre: data.nombre,
           imagen: data.imagen,
